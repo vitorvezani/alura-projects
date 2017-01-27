@@ -1,6 +1,6 @@
 package imposto;
 
-public class DesignPattersJavaI {
+public class TestaImpostos {
 	
 	public static void main(String[] args) {
 		Imposto iss = new ISS();
