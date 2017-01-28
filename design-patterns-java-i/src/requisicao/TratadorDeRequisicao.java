@@ -9,36 +9,23 @@ public class TratadorDeRequisicao {
 	private Resposta xml;
 
 	public TratadorDeRequisicao() {
-		csv = new RespostaCSV();
-		portento = new RespostaPorcent();
-		xml = new RespostaXML();
-		
-		insereOrder();
-		
-	}
-	
-	private void insereOrder() {
-		csv.setProxima(portento);
-		portento.setProxima(xml);
-		xml.setProxima(semResposta());
+		xml = new RespostaXML(semResposta());
+		portento = new RespostaPorcent(xml);
+		csv = new RespostaCSV(portento);
 	}
 
+	public void trata(Requisicao req, Conta conta) {
+		csv.responde(req, conta);
+	}
+	
 	private Resposta semResposta() {
 		return new Resposta() {
-			
-			@Override
-			public void setProxima(Resposta resposta) {
-			}
 			
 			@Override
 			public void responde(Requisicao req, Conta conta) {
 				System.out.println("Requisicao sem tratador");
 			}
 		};
-	}
-
-	public void trata(Requisicao req, Conta conta) {
-		csv.responde(req, conta);
 	}
 	
 }

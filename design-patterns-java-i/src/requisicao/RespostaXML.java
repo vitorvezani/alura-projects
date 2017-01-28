@@ -6,7 +6,11 @@ import requisicao.Requisicao.Formato;
 public class RespostaXML implements Resposta {
 
 	private Resposta resposta;
-
+	
+	public RespostaXML(Resposta resposta) {
+		this.resposta = resposta;
+	}
+	
 	@Override
 	public void responde(Requisicao req, Conta conta) {
 		if(req.getFormato().equals(Formato.XML)) {
@@ -14,11 +18,6 @@ public class RespostaXML implements Resposta {
 		} else {
 			resposta.responde(req, conta);
 		}
-	}
-
-	@Override
-	public void setProxima(Resposta resposta) {
-		this.resposta = resposta;
 	}
 
 }

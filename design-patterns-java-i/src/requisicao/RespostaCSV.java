@@ -7,6 +7,12 @@ public class RespostaCSV implements Resposta {
 
 	private Resposta resposta;
 
+	
+	
+	public RespostaCSV(Resposta resposta) {
+		this.resposta = resposta;
+	}
+	
 	@Override
 	public void responde(Requisicao req, Conta conta) {
 		if(req.getFormato().equals(Formato.CSV)) {
@@ -14,11 +20,6 @@ public class RespostaCSV implements Resposta {
 		} else {
 			resposta.responde(req, conta);
 		}
-	}
-
-	@Override
-	public void setProxima(Resposta resposta) {
-		this.resposta = resposta;
 	}
 
 }
