@@ -2,16 +2,16 @@ package imposto;
 
 public class Item {
 
-	private String descricao;
+	private String nome;
 	private double valor;
 
-	public Item(String descricao, double valor) {
-		this.descricao = descricao;
+	public Item(String nome, double valor) {
+		this.nome = nome;
 		this.valor = valor;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getNome() {
+		return nome;
 	}
 
 	public double getValor() {

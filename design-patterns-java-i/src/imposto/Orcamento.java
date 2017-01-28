@@ -28,7 +28,7 @@ public class Orcamento {
 
 	public boolean possui(String nome) {
 		for (Item item : itens) {
-			if(item.getDescricao().equals(nome)) {
+			if(item.getNome().equals(nome)) {
 				return true;
 			}
 		}
