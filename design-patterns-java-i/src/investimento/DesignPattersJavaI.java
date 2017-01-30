@@ -7,9 +7,9 @@ public class DesignPattersJavaI {
 		TipoInvestidor moderado = new Moderado();
 		TipoInvestidor arrojado = new Arrojado();
 		
-		Conta conta = new Conta();
-		Conta conta1 = new Conta();
-		Conta conta2 = new Conta();
+		Conta conta = new Conta("Vitor");
+		Conta conta1 = new Conta("Vitor");
+		Conta conta2 = new Conta("Vitor");
 
 		Investimento investimento = new Investimento(10000.0);
 

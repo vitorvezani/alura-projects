@@ -10,7 +10,7 @@ public class TestaRequisicao {
 		Requisicao reqCSV = new Requisicao(Formato.CSV);
 		Requisicao reqPorcento = new Requisicao(Formato.PORCENTO);
 		Requisicao reqOther = new Requisicao(Formato.OTHER);
-		Conta conta = new Conta();
+		Conta conta = new Conta("Vitor");
 		
 		TratadorDeRequisicao tratDeReq = new TratadorDeRequisicao();
 		
