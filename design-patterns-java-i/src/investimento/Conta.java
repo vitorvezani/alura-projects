@@ -1,11 +1,14 @@
 package investimento;
 
+import java.util.Calendar;
+
 public class Conta {
 
 	private String nome;
 	private double numero;
 	private double agencia;
 	private double saldo;
+	private Calendar dataAbertura;
 	
 	public Conta(String nome) {
 		this.nome = nome;
@@ -29,6 +32,10 @@ public class Conta {
 
 	public double getSaldo() {
 		return saldo;
+	}
+
+	public Calendar getDataAbertura() {
+		return dataAbertura;
 	}
 	
 }

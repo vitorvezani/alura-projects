@@ -1,17 +1,31 @@
 package imposto.templateMethod;
 
+import imposto.Imposto;
 import imposto.Orcamento;
 
 public class ICPP extends TemplateDeImpostoCondicional {
-
-  public boolean deveUsarMaximaTaxacao(Orcamento orcamento) {
+	
+	public ICPP() {
+		super();
+	}
+	
+	public ICPP(Imposto outroImposto) {
+		super(outroImposto);
+	}
+	
+  @Override
+	public boolean deveUsarMaximaTaxacao(Orcamento orcamento) {
     return orcamento.getValor() > 500;
   }
-  public double maximaTaxacao(Orcamento orcamento) { 
-    return orcamento.getValor() * 0.07;
+  
+  @Override
+	public double maximaTaxacao(Orcamento orcamento) { 
+    return orcamento.getValor() * 0.07 + calculoDoOutroImposto(orcamento);
   }
-  public double minimaTaxacao(Orcamento orcamento) {
-    return orcamento.getValor() * 0.05;
+  
+  @Override
+	public double minimaTaxacao(Orcamento orcamento) {
+    return orcamento.getValor() * 0.05 + calculoDoOutroImposto(orcamento);
   }
 
 }

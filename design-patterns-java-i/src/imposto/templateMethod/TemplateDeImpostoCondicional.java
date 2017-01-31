@@ -3,8 +3,16 @@ package imposto.templateMethod;
 import imposto.Imposto;
 import imposto.Orcamento;
 
-public abstract class TemplateDeImpostoCondicional implements Imposto {
+public abstract class TemplateDeImpostoCondicional extends Imposto {
 
+	public TemplateDeImpostoCondicional() {
+		super();
+	}
+	
+	public TemplateDeImpostoCondicional(Imposto outroImposto) {
+		super(outroImposto);
+	}
+	
 	@Override
 	public double calcula(Orcamento orcamento) {
 
