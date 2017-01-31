@@ -5,7 +5,7 @@ import imposto.ISS;
 import imposto.Imposto;
 import imposto.Orcamento;
 
-public class TesteDeImpostos {
+public class TestaImpostos {
 
 	public static void main(String[] args) {
     Imposto impostoComplexo = new ISS(new ICMS(new ImpostoMuitoAlto()));

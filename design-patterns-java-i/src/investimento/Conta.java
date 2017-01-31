@@ -7,15 +7,22 @@ public class Conta {
 	private String nome;
 	private double numero;
 	private double agencia;
-	private double saldo;
 	private Calendar dataAbertura;
+	protected double saldo;
+	protected EstadoDaConta estado;
 	
 	public Conta(String nome) {
 		this.nome = nome;
+		this.dataAbertura = Calendar.getInstance();
+		this.estado = new Positivo();
 	}
 	
 	public void deposita(double montante) {
-		this.saldo += montante;
+		estado.depositar(this, montante);
+	}
+	
+	public void sacar(double montante) {
+		estado.sacar(this, montante);
 	}
 
 	public String getNome() {
