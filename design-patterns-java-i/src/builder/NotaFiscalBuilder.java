@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import imposto.Item;
+import observer.AcaoAposGerarNota;
 
 public class NotaFiscalBuilder {
 	private String razaoSocial;
@@ -16,10 +17,20 @@ public class NotaFiscalBuilder {
 
 	private List<Item> itens = new ArrayList<Item>();
 
+	List<AcaoAposGerarNota> todasAcoesASeremExecutadas;
+
+	public NotaFiscalBuilder() {
+		this.todasAcoesASeremExecutadas = new ArrayList<>();
+	}
+
 	public NotaFiscalBuilder paraEmpresa(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
 		return this; // retorno eu mesmo, o próprio builder, para que o cliente
 		             // continue utilizando
+	}
+
+	public void adicionaAcao(AcaoAposGerarNota novaAcao) {
+		this.todasAcoesASeremExecutadas.add(novaAcao);
 	}
 
 	public NotaFiscalBuilder comCnpj(String cnpj) {
@@ -45,7 +56,13 @@ public class NotaFiscalBuilder {
 	}
 
 	public NotaFiscal build() {
-		return new NotaFiscal(razaoSocial, cnpj, dataEmissao, valorBruto, impostos, itens, observacoes);
+		NotaFiscal nf = new NotaFiscal(razaoSocial, cnpj, dataEmissao, valorBruto, impostos, itens, observacoes);
+		
+		for (AcaoAposGerarNota acao : todasAcoesASeremExecutadas) {
+			acao.executa(nf);
+		}
+		
+		return nf; 
 	}
 
 }
