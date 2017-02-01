@@ -1,8 +1,11 @@
 package builder;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import imposto.Item;
+import observer.AcaoAposGerarNota;
 import observer.EnviadorDeEmail;
 import observer.EnviadorDeSms;
 import observer.Impressora;
@@ -11,13 +14,14 @@ import observer.NotaFiscalDao;
 
 public class TestaNotaFiscalBuilder {
 	public static void main(String[] args) {
-		NotaFiscalBuilder builder = new NotaFiscalBuilder();
-
-		builder.adicionaAcao(new EnviadorDeEmail());
-		builder.adicionaAcao(new NotaFiscalDao());
-		builder.adicionaAcao(new EnviadorDeSms());
-		builder.adicionaAcao(new Impressora());
-		builder.adicionaAcao(new Multiplicador(2));
+		List<AcaoAposGerarNota> acoes = new ArrayList<>();
+		acoes.add(new EnviadorDeEmail());
+		acoes.add(new NotaFiscalDao());
+		acoes.add(new EnviadorDeSms());
+		acoes.add(new Impressora());
+		acoes.add(new Multiplicador(2));
+		
+		NotaFiscalBuilder builder = new NotaFiscalBuilder(acoes);
 
 		NotaFiscal nf = builder.paraEmpresa("Caelum")
 				.comCnpj("123.456.789/0001-10")
