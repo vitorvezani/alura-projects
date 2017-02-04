@@ -18,12 +18,12 @@ public class Programa {
 
 		contrato.avanca();
 		historico.adiciona(contrato.salvaEstado());
+				
 		
-		System.out.println(historico.getEstado(2).getContrato().getTipoContrato());
-
-		System.out.println(historico.getEstado(1).getContrato().getTipoContrato());
-
-		System.out.println(historico.getEstado(0).getContrato().getTipoContrato());
+		System.out.println(contrato.getTipoContrato());
+		contrato.restaura(historico.getEstado(0));
+		System.out.println(contrato.getTipoContrato());
+		
 	}
 
 }

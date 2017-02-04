@@ -46,4 +46,10 @@ public class Contrato {
 		return tipoContrato;
 	}
 
+	public void restaura(Estado estado) {
+		this.date = estado.getContrato().getDate();
+		this.descricao = estado.getContrato().getDescricao();
+		this.tipoContrato = estado.getContrato().getTipoContrato();
+	}
+
 }
