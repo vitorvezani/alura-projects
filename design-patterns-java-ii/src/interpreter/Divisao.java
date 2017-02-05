@@ -1,5 +1,7 @@
 package interpreter;
 
+import visitor.Visitor;
+
 public class Divisao implements Expressao {
 
 	private Expressao esquerda;
@@ -13,6 +15,12 @@ public class Divisao implements Expressao {
 	@Override
 	public int avalia() {
 		return esquerda.avalia() / direita.avalia();
+	}
+
+	@Override
+	public void aceita(Visitor impressoraVisitor) {
+		impressoraVisitor.visitaDivisao(this);
+		
 	}
 
 }

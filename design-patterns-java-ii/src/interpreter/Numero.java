@@ -1,5 +1,7 @@
 package interpreter;
 
+import visitor.Visitor;
+
 public class Numero implements Expressao {
 
 	private int num;
@@ -11,6 +13,15 @@ public class Numero implements Expressao {
 	@Override
 	public int avalia() {
 		return num;
+	}
+
+	public int getNumero() {
+		return num;
+	}
+
+	@Override
+	public void aceita(Visitor impressoraVisitor) {
+		impressoraVisitor.visitaNumero(this);
 	}
 
 }

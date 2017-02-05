@@ -1,5 +1,7 @@
 package interpreter;
 
+import visitor.Visitor;
+
 public class Soma implements Expressao {
 
 	private Expressao esquerda;
@@ -13,6 +15,19 @@ public class Soma implements Expressao {
 	@Override
 	public int avalia() {
 		return esquerda.avalia() + direita.avalia();
+	}
+
+	public Expressao getEsquerda() {
+		return esquerda;
+	}
+
+	public Expressao getDireita() {
+		return direita;
+	}
+
+	@Override
+	public void aceita(Visitor impressoraVisitor) {
+		impressoraVisitor.visitaSoma(this);
 	}
 
 }
