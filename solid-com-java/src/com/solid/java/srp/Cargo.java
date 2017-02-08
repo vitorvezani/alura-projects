@@ -1,4 +1,4 @@
-package com.solid.java;
+package com.solid.java.srp;
 
 public enum Cargo {
 	DESENVOLVEDOR(new DezOuVintePorCento()), DBA(new DezOuVintePorCento()), TESTER(new QuinzeOuVinteECincoPorCento());

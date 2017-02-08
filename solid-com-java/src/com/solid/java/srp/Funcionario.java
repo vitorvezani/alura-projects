@@ -1,4 +1,4 @@
-package com.solid.java;
+package com.solid.java.srp;
 
 public class Funcionario {
 
