@@ -1,6 +1,7 @@
 package com.solid.java.acoplamento;
 
 public class Fatura {
+	
 	private double valorMensal;
 	private String cliente;
 
@@ -27,4 +28,5 @@ public class Fatura {
 	public void setCliente(String cliente) {
 		this.cliente = cliente;
 	}
+
 }
