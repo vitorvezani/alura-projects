@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="design-patterns-java-i/src"/>
+	<classpathentry kind="src" path="design-patterns-java-ii/src"/>
+	<classpathentry kind="src" path="solid-com-java/src"/>
+	<classpathentry kind="src" path="test-driven-development/src"/>
+	<classpathentry kind="src" path="test-driven-development/test"/>
+	<classpathentry kind="lib" path="design-patterns-java-ii/lib/jfugue-5.0.7.jar"/>
+	<classpathentry kind="lib" path="test-driven-development/jars/hamcrest-all-1.3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="design-patterns-java-i/bin"/>
+</classpath>
