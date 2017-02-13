@@ -1,13 +1,14 @@
 package org.casadocodigo.config;
 
 import org.casadocodigo.controllers.HomeController;
+import org.casadocodigo.daos.ProdutoDAO;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses = { HomeController.class })
+@ComponentScan(basePackageClasses = { HomeController.class, ProdutoDAO.class })
 public class AppWebConfiguration {
 
 	@Bean
