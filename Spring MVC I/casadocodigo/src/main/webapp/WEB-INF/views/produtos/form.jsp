@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- Import da taglib -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -8,12 +7,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Livros de Java, Android, iPhone, Ruby, PHP e muito mais -
-	Casa do Código</title>
+<title>Livros de Java, Android, iPhone, Ruby, PHP e muito mais - Casa do Código</title>
 </head>
 <body>
-	<form:form action="${ s:mvcUrl('PC#gravar').build() }" method="post"
-		commandName="produto" enctype="multipart/form-data">
+	<form:form action="${ s:mvcUrl('PC#gravar').build() }" method="post" commandName="produto"
+		enctype="multipart/form-data">
 		<div>
 			<label>Título</label>
 			<form:input path="titulo" />
@@ -38,8 +36,7 @@
 			<div>
 				<label>${tipoPreco}</label>
 				<form:input path="precos[${status.index}].valor" />
-				<form:hidden path="precos[${status.index}].tipo"
-					value="${tipoPreco}" />
+				<form:hidden path="precos[${status.index}].tipo" value="${tipoPreco}" />
 			</div>
 		</c:forEach>
 
