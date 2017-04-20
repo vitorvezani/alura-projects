@@ -6,76 +6,80 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ClienteTarefas {
-  private static final class EnviaComandoTask implements Runnable {
-    private Socket socket;
 
-    public EnviaComandoTask(Socket socket) {
-      this.socket = socket;
-    }
+	public static void main(String[] args) throws Exception {
 
-    @Override
-    public void run() {
-      try {
-        System.out.println("Pode enviar comandos!");
-        PrintStream saida = new PrintStream(socket.getOutputStream());
+		Socket socket = new Socket("localhost", 12345);
 
-        Scanner teclado = new Scanner(System.in);
-        while (teclado.hasNextLine()) {
+		System.out.println("Conex√£o Estabelecida");
 
-          String linha = teclado.nextLine();
+		Thread threadEnviaComando = new Thread(new Runnable() {
 
-          if (linha.trim().equals("")) {
-            break;
-          }
+			@Override
+			public void run() {
 
-          saida.println(linha);
-        }
-        saida.close();
-        teclado.close();
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
-    }
-  }
+				try {
+					System.out.println("Pode enviar comandos!");
 
-  private static final class RecebeRespostaTask implements Runnable {
-    private Socket socket;
+					PrintStream saida = new PrintStream(
+							socket.getOutputStream());
 
-    public RecebeRespostaTask(Socket socket) {
-      this.socket = socket;
-    }
+					Scanner teclado = new Scanner(System.in);
 
-    @Override
-    public void run() {
-      try {
-        System.out.println("Recebendo dados do servidor");
-        Scanner respostaServidor = new Scanner(socket.getInputStream());
-        while (respostaServidor.hasNextLine()) {
-          String linha = respostaServidor.nextLine();
-          System.out.println(linha);
-        }
+					while (teclado.hasNextLine()) {
 
-        respostaServidor.close();
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
-    }
-  }
+						String linha = teclado.nextLine();
 
-  public static void main(String[] args) throws IOException, InterruptedException {
-    Socket socket = new Socket("localhost", 12345);
-    System.out.println("Conex„o Estabelecida");
+						if (linha.trim().equals("")) {
+							break;
+						}
 
-    Thread threadEnviaComando = new Thread(new EnviaComandoTask(socket));
-    Thread threadRecebeResposta = new Thread(new RecebeRespostaTask(socket));
+						saida.println(linha);
+					}
 
-    threadRecebeResposta.start();
-    threadEnviaComando.start();
+					saida.close();
+					teclado.close();
 
-    threadEnviaComando.join();
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			}
+		});
 
-    System.out.println("Fechando o socket do cliente");
-    socket.close();
-  }
+		Thread threadRecebeResposta = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+
+				try {
+					System.out.println("Recebendo dados do servidor");
+					Scanner respostaServidor = new Scanner(
+							socket.getInputStream());
+
+					while (respostaServidor.hasNextLine()) {
+
+						String linha = respostaServidor.nextLine();
+						System.out.println(linha);
+					}
+
+					respostaServidor.close();
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+
+			}
+		});
+
+		threadRecebeResposta.start();
+		threadEnviaComando.start();
+
+		threadEnviaComando.join();
+
+		System.out.println("Fechando o socket do cliente");
+
+		socket.close();
+
+	}
 
 }
