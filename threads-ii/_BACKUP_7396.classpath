@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+<<<<<<< 3752aaabd1f2ad137272bcc811e2e80fcba5f9cd
+  <classpathentry excluding="src/main/|src/main/resources/|src/" kind="src" path="src/main/java" />
+  <classpathentry kind="src" path="src/test/resources" />
+  <classpathentry kind="src" path="src/main/resources" />
+  <classpathentry kind="src" path="src/test/java" />
+  <classpathentry excluding="src/main/java/|src/|src/test/resources/|src/main/resources/|src/test/java/" kind="src" path="" />
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8" />
+  <classpathentry kind="output" path="bin" />
+=======
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="output" path="bin"/>
+>>>>>>> Adicao da aula 7 (Produzindo e Consumindo com Threads)
+</classpath>
