@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.com.vvezani.enviadorEmail.EmailService;
 import br.com.vvezani.listavip.model.Convidado;
 import br.com.vvezani.listavip.repository.ConvidadoRepository;
 
@@ -15,6 +16,9 @@ public class ConvidadoController {
 	
 	@Autowired
 	private ConvidadoRepository repository;
+	
+	@Autowired
+	private EmailService emailService;
 	
 	@RequestMapping("/")
 	public String index(){
@@ -40,7 +44,8 @@ public class ConvidadoController {
 		repository.save(novoConvidado);
 		
 		Iterable<Convidado> convidados = repository.findAll();
-		
+
+		emailService.enviar(nome, email);
 		
 		model.addAttribute("convidados", convidados);
 		
